@@ -16,7 +16,9 @@ go run main.go
 
 ## License
 
-MIT
+
+[MIT](./LICENSE)
+
 
 ## Author
 
