@@ -5,9 +5,9 @@
 chars="################## Welcome to Coin App ##################
  ##########################################################
     Usage with arguments:
-    -h, --help: show this help message and exit
-    -c, --coin: coin name
-    -a, --all: all coins
+     --help: show this help message and exit
+     --coin: coin name
+     --all: all coins
     "
 
 

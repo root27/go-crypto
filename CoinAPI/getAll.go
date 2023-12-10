@@ -73,7 +73,6 @@ func GetAll() []Coin {
 		fmt.Println("Error sending request to server")
 		os.Exit(1)
 	}
-	fmt.Println(resp.Status)
 	respBody, _ := ioutil.ReadAll(resp.Body)
 	// fmt.Println(string(respBody))
 
@@ -123,7 +122,6 @@ func GetCoin(coin string) Coin {
 		fmt.Println("Error sending request to server")
 		os.Exit(1)
 	}
-	fmt.Println(resp.Status)
 	respBody, _ := ioutil.ReadAll(resp.Body)
 	// fmt.Println(string(respBody))
 
