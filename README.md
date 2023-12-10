@@ -10,7 +10,7 @@ go run main.go
 
 ```
 
-## Screenshot
+## Screenshot of the project
 
 ![Screenshot](./assets/getAll.png)
 
