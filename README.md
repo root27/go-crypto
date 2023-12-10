@@ -10,6 +10,10 @@ go run main.go
 
 ```
 
+## Screenshot
+
+![Screenshot](./assets/getAll.png)
+
 ## License
 
 MIT
