@@ -1,6 +1,6 @@
 ### GoCrypto with Terminal
 
-Simple Terminal UI for GoCrypto. This project uses CoinMarketCap(https://coinmarketcap.com/) API.
+Simple Terminal UI for GoCrypto. This project uses [!CoinMarketCap](https://coinmarketcap.com/) API.
 
 ## Usage
 
