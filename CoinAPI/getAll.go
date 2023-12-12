@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+
+	"github.com/joho/godotenv"
 )
 
 type Response struct {
@@ -50,6 +52,11 @@ type Coin struct {
 
 func GetAll() []Coin {
 
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	var response Response
 
 	client := &http.Client{}
@@ -65,7 +72,7 @@ func GetAll() []Coin {
 	q.Add("convert", "USD")
 
 	req.Header.Set("Accepts", "application/json")
-	req.Header.Add("X-CMC_PRO_API_KEY", "be121144-22a4-4e82-a6a7-6607739fa91a")
+	req.Header.Add("X-CMC_PRO_API_KEY", os.Getenv("API"))
 	req.URL.RawQuery = q.Encode()
 
 	resp, err := client.Do(req)
@@ -98,6 +105,12 @@ func GetAll() []Coin {
 
 func GetCoin(coin string) (Coin, error) {
 
+	err := godotenv.Load()
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	var response Response
 
 	var result Coin
@@ -114,7 +127,7 @@ func GetCoin(coin string) (Coin, error) {
 	q.Add("convert", "USD")
 
 	req.Header.Set("Accepts", "application/json")
-	req.Header.Add("X-CMC_PRO_API_KEY", "be121144-22a4-4e82-a6a7-6607739fa91a")
+	req.Header.Add("X-CMC_PRO_API_KEY", os.Getenv("API"))
 	req.URL.RawQuery = q.Encode()
 
 	resp, err := client.Do(req)
