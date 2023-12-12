@@ -58,8 +58,8 @@ func main() {
 
 		fmt.Println("You can use the following flags:")
 		fmt.Println("  -help: Show this help message")
-		fmt.Println("  -coin: Show the price of a coin.")
-		fmt.Println("  -all: Show the price of first 10 coins")
+		fmt.Println("  -coin: Show the details of a coin.")
+		fmt.Println("  -all: Show the details of first 10 coins")
 		os.Exit(0)
 	}
 
