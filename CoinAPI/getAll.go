@@ -96,7 +96,7 @@ func GetAll() []Coin {
 	return result
 }
 
-func GetCoin(coin string) Coin {
+func GetCoin(coin string) (Coin, error) {
 
 	var response Response
 
@@ -133,6 +133,7 @@ func GetCoin(coin string) Coin {
 
 	for _, i := range response.Data {
 		if i.Name == coin {
+
 			result.Name = i.Name
 			result.Quote.USD.Price = i.Quote.USD.Price
 			result.Quote.USD.PercentChange1H = i.Quote.USD.PercentChange1H
@@ -140,6 +141,10 @@ func GetCoin(coin string) Coin {
 		}
 	}
 
-	return result
+	if result.Name == "" {
+		return result, fmt.Errorf("Coin not found. Please check the coin name")
+	}
+
+	return result, nil
 
 }

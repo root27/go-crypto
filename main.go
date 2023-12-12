@@ -89,7 +89,12 @@ func main() {
 
 	if *coin != "" {
 
-		data := CoinAPI.GetCoin(*coin)
+		data, err := CoinAPI.GetCoin(*coin)
+
+		if err != nil {
+			fmt.Println("Error:", err)
+			os.Exit(1)
+		}
 
 		headerFmt := color.New(color.FgGreen, color.Underline).SprintfFunc()
 		columnFmt := color.New(color.FgYellow).SprintfFunc()
