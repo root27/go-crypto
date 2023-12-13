@@ -50,12 +50,6 @@ type Coin struct {
 
 func FilterGetAll(number string) []Coin {
 
-	err := os.Setenv("API", "")
-
-	if err != nil {
-		fmt.Println("Error on env variable!!!")
-	}
-
 	var response Response
 
 	client := &http.Client{}
@@ -71,7 +65,7 @@ func FilterGetAll(number string) []Coin {
 	q.Add("convert", "USD")
 
 	req.Header.Set("Accepts", "application/json")
-	req.Header.Add("X-CMC_PRO_API_KEY", os.Getenv("API"))
+	req.Header.Add("X-CMC_PRO_API_KEY", "be121144-22a4-4e82-a6a7-6607739fa91a")
 	req.URL.RawQuery = q.Encode()
 
 	resp, err := client.Do(req)
@@ -104,12 +98,6 @@ func FilterGetAll(number string) []Coin {
 
 func GetAll() []Coin {
 
-	err := os.Setenv("API", "")
-
-	if err != nil {
-		fmt.Println("Error on env variable!!!")
-	}
-
 	var response Response
 
 	client := &http.Client{}
@@ -125,7 +113,7 @@ func GetAll() []Coin {
 	q.Add("convert", "USD")
 
 	req.Header.Set("Accepts", "application/json")
-	req.Header.Add("X-CMC_PRO_API_KEY", os.Getenv("API"))
+	req.Header.Add("X-CMC_PRO_API_KEY", "be121144-22a4-4e82-a6a7-6607739fa91a")
 	req.URL.RawQuery = q.Encode()
 
 	resp, err := client.Do(req)
@@ -158,12 +146,6 @@ func GetAll() []Coin {
 
 func GetCoin(coin string) (Coin, error) {
 
-	err := os.Setenv("API", "")
-
-	if err != nil {
-		fmt.Println("Error on env variable!!!")
-	}
-
 	var response Response
 
 	var result Coin
@@ -180,7 +162,7 @@ func GetCoin(coin string) (Coin, error) {
 	q.Add("convert", "USD")
 
 	req.Header.Set("Accepts", "application/json")
-	req.Header.Add("X-CMC_PRO_API_KEY", os.Getenv("API"))
+	req.Header.Add("X-CMC_PRO_API_KEY", "be121144-22a4-4e82-a6a7-6607739fa91a")
 	req.URL.RawQuery = q.Encode()
 
 	resp, err := client.Do(req)
