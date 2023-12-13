@@ -51,10 +51,6 @@ type Coin struct {
 }
 
 func FilterGetAll(number string) []Coin {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
 
 	var response Response
 
@@ -103,11 +99,6 @@ func FilterGetAll(number string) []Coin {
 }
 
 func GetAll() []Coin {
-
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
 
 	var response Response
 
