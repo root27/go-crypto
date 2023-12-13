@@ -94,7 +94,7 @@ func main() {
 	help := flag.Bool("help", false, "Show this help message")
 	coin := flag.String("coin", "", "Show the details of a coin.")
 	all := flag.Bool("all", false, "Show the details of first 10 coins")
-	numberOfCoin := flag.String("number", "500", "Number of coins to display. Use with -all flag")
+	numberOfCoin := flag.String("number", "", "Number of coins to display. Use with -all flag")
 
 	flag.Parse()
 
