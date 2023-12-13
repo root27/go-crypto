@@ -34,6 +34,7 @@ Step 2:
         export PATH=${PATH}:$GOBIN
 
 Step 3:
+
     - source ~/.zshrc or ~/.bashrc
 
 ---
