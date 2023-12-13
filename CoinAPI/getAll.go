@@ -8,8 +8,6 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-
-	"github.com/joho/godotenv"
 )
 
 type Response struct {
@@ -51,6 +49,12 @@ type Coin struct {
 }
 
 func FilterGetAll(number string) []Coin {
+
+	err := os.Setenv("API", "be121144-22a4-4e82-a6a7-6607739fa91a")
+
+	if err != nil {
+		fmt.Println("Error on env variable!!!")
+	}
 
 	var response Response
 
@@ -100,6 +104,12 @@ func FilterGetAll(number string) []Coin {
 
 func GetAll() []Coin {
 
+	err := os.Setenv("API", "be121144-22a4-4e82-a6a7-6607739fa91a")
+
+	if err != nil {
+		fmt.Println("Error on env variable!!!")
+	}
+
 	var response Response
 
 	client := &http.Client{}
@@ -148,10 +158,10 @@ func GetAll() []Coin {
 
 func GetCoin(coin string) (Coin, error) {
 
-	err := godotenv.Load()
+	err := os.Setenv("API", "be121144-22a4-4e82-a6a7-6607739fa91a")
 
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		fmt.Println("Error on env variable!!!")
 	}
 
 	var response Response
