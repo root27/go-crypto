@@ -2,11 +2,11 @@
 
 Simple Terminal UI for GoCrypto. This project uses [CoinMarketCap](https://coinmarketcap.com/) API.
 
-## Usage
+## Installation
 
 ```bash
 
-go run main.go
+go install github.com/root27/go-crypto@latest
 
 ```
 
