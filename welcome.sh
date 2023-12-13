@@ -14,10 +14,15 @@ chars="
     "
 
 greenChars=" 
-        --help: show this help message and exit
-        --coin [ARG]: show coin info
-        --all: show first 10 coins"
+        --help, -help: show this help message and exit
+        --coin, -coin [ARG]: show coin info
 
+            Exampe: -coin Bitcoin
+        
+        --all, -all: show first 500 coins
+        --number, -number [ARG]: Number of coins to display. Use with -all flag 
+        
+            Example: -number 50 -all or -all -number 50"
 
 for (( j=0; j<${#chars}; j++ )); do
     printf "${chars:$j:1}"

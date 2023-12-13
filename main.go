@@ -51,6 +51,7 @@ func main() {
 	help := flag.Bool("help", false, "Show this help message")
 	coin := flag.String("coin", "", "Show the details of a coin.")
 	all := flag.Bool("all", false, "Show the details of first 10 coins")
+	numberOfCoin := flag.String("number", "500", "Number of coins to display. Use with -all flag")
 
 	flag.Parse()
 
@@ -58,33 +59,31 @@ func main() {
 
 		fmt.Println("You can use the following flags:")
 		fmt.Println("  -help: Show this help message")
-		fmt.Println("  -coin: Show the details of a coin.")
+		fmt.Println("  -coin [ARG]: Show the details of a coin.")
 		fmt.Println("  -all: Show the details of first 10 coins")
+		fmt.Println("  -number [ARG]: Number of coins to display. Use with -all flag ")
 		os.Exit(0)
 	}
 
 	if *all {
 
-		data := CoinAPI.GetAll()
+		if *numberOfCoin != "" {
+			data := CoinAPI.FilterGetAll(*numberOfCoin)
 
-		headerFmt := color.New(color.FgGreen, color.Underline).SprintfFunc()
+			Table(data)
 
-		tbl := table.New("Name", "Price $", "Change in 1H", "Last Updated")
+		} else {
+			data := CoinAPI.GetAll()
 
-		tbl.WithHeaderFormatter(headerFmt).WithFirstColumnFormatter(color.New(color.FgYellow).SprintfFunc())
-
-		for _, coin := range data {
-
-			if coin.Quote.USD.PercentChange1H > 0 {
-				tbl.AddRow(coin.Name, coin.Quote.USD.Price, Colorize(fmt.Sprintf("+%f", coin.Quote.USD.PercentChange1H), ColorGreen), coin.Quote.USD.LastUpdated)
-			} else {
-
-				tbl.AddRow(coin.Name, coin.Quote.USD.Price, Colorize(fmt.Sprintf("%f", coin.Quote.USD.PercentChange1H), ColorRed), coin.Quote.USD.LastUpdated)
-			}
+			Table(data)
 		}
 
-		tbl.Print()
+	}
 
+	if *numberOfCoin != "" {
+		if !*all {
+			fmt.Println("You must use with -all flag !!!")
+		}
 	}
 
 	if *coin != "" {

@@ -50,6 +50,58 @@ type Coin struct {
 	} `json:"quote"`
 }
 
+func FilterGetAll(number string) []Coin {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	var response Response
+
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest", nil)
+	if err != nil {
+		log.Print(err)
+		os.Exit(1)
+	}
+
+	q := url.Values{}
+	q.Add("start", "1")
+	q.Add("limit", number)
+	q.Add("convert", "USD")
+
+	req.Header.Set("Accepts", "application/json")
+	req.Header.Add("X-CMC_PRO_API_KEY", os.Getenv("API"))
+	req.URL.RawQuery = q.Encode()
+
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println("Error sending request to server")
+		os.Exit(1)
+	}
+	respBody, _ := ioutil.ReadAll(resp.Body)
+	// fmt.Println(string(respBody))
+
+	err = json.Unmarshal(respBody, &response)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	var result []Coin
+
+	for _, i := range response.Data {
+		var coin Coin
+		coin.Name = i.Name
+		coin.Quote.USD.Price = i.Quote.USD.Price
+		coin.Quote.USD.PercentChange1H = i.Quote.USD.PercentChange1H
+		coin.Quote.USD.LastUpdated = i.Quote.USD.LastUpdated
+		result = append(result, coin)
+	}
+
+	return result
+}
+
 func GetAll() []Coin {
 
 	err := godotenv.Load()
@@ -68,7 +120,7 @@ func GetAll() []Coin {
 
 	q := url.Values{}
 	q.Add("start", "1")
-	q.Add("limit", "10")
+	q.Add("limit", "500")
 	q.Add("convert", "USD")
 
 	req.Header.Set("Accepts", "application/json")
