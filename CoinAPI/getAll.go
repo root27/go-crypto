@@ -50,7 +50,7 @@ type Coin struct {
 
 func FilterGetAll(number string) []Coin {
 
-	err := os.Setenv("API", "be121144-22a4-4e82-a6a7-6607739fa91a")
+	err := os.Setenv("API", "")
 
 	if err != nil {
 		fmt.Println("Error on env variable!!!")
@@ -104,7 +104,7 @@ func FilterGetAll(number string) []Coin {
 
 func GetAll() []Coin {
 
-	err := os.Setenv("API", "be121144-22a4-4e82-a6a7-6607739fa91a")
+	err := os.Setenv("API", "")
 
 	if err != nil {
 		fmt.Println("Error on env variable!!!")
@@ -158,7 +158,7 @@ func GetAll() []Coin {
 
 func GetCoin(coin string) (Coin, error) {
 
-	err := os.Setenv("API", "be121144-22a4-4e82-a6a7-6607739fa91a")
+	err := os.Setenv("API", "")
 
 	if err != nil {
 		fmt.Println("Error on env variable!!!")
