@@ -1,0 +1,24 @@
+
+
+version: 1
+
+builds:
+  - binary: go-crypto
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+
+    goarch:
+      - amd64
+      - arm64
+   
+brews:
+  - 
+    name: go-crypto
+   
+    repository:
+      owner: root27
+      name: homebrew-tools
+    
