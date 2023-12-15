@@ -17,8 +17,11 @@ builds:
 brews:
   - 
     name: go-crypto
+    homepage: https://github.com/root27/go-crypto
    
     repository:
       owner: root27
       name: homebrew-tools
+    
+    
     
