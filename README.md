@@ -18,6 +18,28 @@ Go will automatically install it in your $GOPATH/bin directory which should be i
 
 ---
 
+## Homebrew
+
+If you are using macOS, you can install go-crypto with Homebrew.
+
+```bash
+
+brew install root27/tools/go-crypto
+
+```
+
+or
+
+```bash
+
+brew tap root27/tools
+
+brew install go-crypto
+
+```
+
+---
+
 ## Troubleshooting
 
 If you have an issue with PATH variable or you don't set GOPATH or GOBIN variable. You can use these steps shown below;
